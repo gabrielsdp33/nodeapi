@@ -1,0 +1,53 @@
+{
+	"env": {
+		"node": true,
+		"commonjs": true,
+		"es2021": true
+	},
+	"extends": "eslint:recommended",
+	"parserOptions": {
+		"ecmaVersion": "latest"
+	},
+	"rules": {
+		"no-multi-spaces": "off",
+		"spaced-comment": [
+			"error",
+			"always",
+			{
+				"markers": [
+					"/"
+				]
+			}
+		],
+		"comma-dangle": [
+			"error",
+			"always-multiline"
+		],
+		"indent": [
+			"error",
+			"tab"
+		],
+		"max-len": [
+			"error",
+			150,
+			2,
+			{
+				"ignoreComments": true
+			}
+		],
+		"no-unused-vars": [
+			"error",
+			{
+				"vars": "local",
+				"args": "after-used"
+			}
+		],
+		"no-multiple-empty-lines": [
+			"error",
+			{
+				"max": 2,
+				"maxEOF": 1
+			}
+		]
+	}
+}
