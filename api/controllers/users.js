@@ -38,7 +38,21 @@ exports.users_get_user = (req, res) => {
 		.exec()
 		.then(doc => {
 			if (doc) {
-				res.status(200).json(doc);
+				res.status(200).json({
+					nome: doc.nome,
+					email: doc.email,
+					_id: doc._id,
+					data_criacao: doc.data_criacao,
+					data_atualizacao: doc.data_atualizacao,
+					ultimo_login: doc.ultimo_login,
+					token: doc.token,
+					telefones: doc.telefones.map(tel => {
+						return {
+							numero: tel.numero,
+							ddd: tel.ddd,
+						}
+					}),
+				});
 			}
 			else {
 				res.status(404).json({
@@ -57,7 +71,7 @@ exports.user_signup = (req, res) => {
 		.then(user => {
 			if (user.length >= 1) {
 				return res.status(409).json({
-					mensagem: '"E-mail já existente',
+					mensagem: "E-mail já existente",
 				});
 			}
 			else {
